@@ -1,0 +1,110 @@
+
+:root {
+  --bg1: #ffdde1;
+  --bg2: #ee9ca7;
+  --text: #2e294e;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --yes: #e63973;
+  --no: #6b7280;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: var(--text);
+}
+
+.page-container {
+  position: relative;
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 20% 20%, var(--bg1), transparent 40%),
+              radial-gradient(circle at 80% 30%, var(--bg2), transparent 40%),
+              linear-gradient(135deg, #ffd1dc 0%, #fbc2eb 100%);
+  overflow: hidden;
+  padding: 24px;
+}
+
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(4px);
+  padding: 32px 28px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  text-align: center;
+  max-width: 720px;
+  width: min(92vw, 720px);
+  position: relative;
+}
+
+h1 {
+  margin: 0 0 28px;
+  line-height: 1.2;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+}
+
+.buttons {
+  position: relative;
+  min-height: 180px; /* gives the No button room to run */
+}
+
+.btn {
+  cursor: pointer;
+  border: 0;
+  padding: 12px 22px;
+  font-size: 1rem;
+  border-radius: 999px;
+  transition: transform .1s ease, box-shadow .2s ease, background .3s ease, color .3s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  user-select: none;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn.yes {
+  background: var(--yes);
+  color: white;
+  margin-right: 14px;
+}
+
+.btn.yes:hover {
+  box-shadow: 0 10px 24px rgba(230,57,115,0.45);
+}
+
+.btn.no {
+  background: var(--no);
+  color: white;
+  position: absolute;
+  left: 49%;
+  top: 50%;
+  margin-right: 14px;
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+}
+
+.success .card {
+  animation: pop-in .35s ease both;
+}
+
+@keyframes pop-in {
+  from { transform: scale(.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+a.btn.back {
+  display: inline-block;
+  margin-top: 18px;
+  background: white;
+  color: var(--text);
+  text-decoration: none;
+}
+
+a.btn.back:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
